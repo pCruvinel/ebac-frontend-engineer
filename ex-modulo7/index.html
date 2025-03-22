@@ -11,7 +11,7 @@
       padding: 10px;
       margin-top: 10px;
       border-radius: 4px;
-      display: none; /* Começa oculto */
+      display: none;
     }
 
     .mensagem-sucesso {
@@ -27,7 +27,7 @@
     }
 
     label {
-      display: block; /* Faz com que a label fique acima do input */
+      display: block;
       margin-bottom: 5px;
     }
 
@@ -36,7 +36,7 @@
       padding: 8px;
       border: 1px solid #ccc;
       border-radius: 4px;
-      width: 200px; /* Largura fixa para os campos */
+      width: 200px;
     }
 
     button {
@@ -81,7 +81,7 @@
     const mensagemDiv = document.getElementById('mensagem');
 
     formulario.addEventListener('submit', function(event) {
-      event.preventDefault(); // Impede o envio padrão do formulário
+      event.preventDefault();
 
       const campoA = parseFloat(document.getElementById('campoA').value);
       const campoB = parseFloat(document.getElementById('campoB').value);
@@ -90,7 +90,7 @@
           mensagemDiv.textContent = 'Por favor, insira números válidos em ambos os campos.';
           mensagemDiv.classList.remove('mensagem-sucesso');
           mensagemDiv.classList.add('mensagem-erro');
-          mensagemDiv.style.display = 'block'; //Mostra em tela
+          mensagemDiv.style.display = 'block';
           return;
       }
 
@@ -105,7 +105,7 @@
         mensagemDiv.classList.add('mensagem-erro');
       }
 
-      mensagemDiv.style.display = 'block'; // Mostra a mensagem
+      mensagemDiv.style.display = 'block';
     });
   </script>
 </body>
