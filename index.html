@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Validação de Formulário</title>
+  <style>
+    body {
+      font-family: sans-serif;
+    }
+
+    .mensagem {
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 4px;
+      display: none; /* Começa oculto */
+    }
+
+    .mensagem-sucesso {
+      background-color: #d4edda;
+      border: 1px solid #c3e6cb;
+      color: #155724;
+    }
+
+    .mensagem-erro {
+      background-color: #f8d7da;
+      border: 1px solid #f5c6cb;
+      color: #721c24;
+    }
+
+    label {
+      display: block; /* Faz com que a label fique acima do input */
+      margin-bottom: 5px;
+    }
+
+    input {
+      margin-bottom: 10px;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      width: 200px; /* Largura fixa para os campos */
+    }
+
+    button {
+      padding: 10px 15px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+    .container{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+    
+  <h1>Validação de Formulário</h1>
+
+  <form id="meuFormulario">
+    <label for="campoA">Campo A:</label>
+    <input type="number" id="campoA" name="campoA" required>
+
+    <label for="campoB">Campo B:</label>
+    <input type="number" id="campoB" name="campoB" required>
+
+    <button type="submit">Enviar</button>
+  </form>
+
+  <div id="mensagem" class="mensagem"></div>
+</div>
+
+  <script>
+    const formulario = document.getElementById('meuFormulario');
+    const mensagemDiv = document.getElementById('mensagem');
+
+    formulario.addEventListener('submit', function(event) {
+      event.preventDefault(); // Impede o envio padrão do formulário
+
+      const campoA = parseFloat(document.getElementById('campoA').value);
+      const campoB = parseFloat(document.getElementById('campoB').value);
+
+      if (isNaN(campoA) || isNaN(campoB)) {
+          mensagemDiv.textContent = 'Por favor, insira números válidos em ambos os campos.';
+          mensagemDiv.classList.remove('mensagem-sucesso');
+          mensagemDiv.classList.add('mensagem-erro');
+          mensagemDiv.style.display = 'block'; //Mostra em tela
+          return;
+      }
+
+
+      if (campoB > campoA) {
+        mensagemDiv.textContent = 'Formulário válido! B é maior que A.';
+        mensagemDiv.classList.remove('mensagem-erro');
+        mensagemDiv.classList.add('mensagem-sucesso');
+      } else {
+        mensagemDiv.textContent = 'Formulário inválido. B deve ser maior que A.';
+        mensagemDiv.classList.remove('mensagem-sucesso');
+        mensagemDiv.classList.add('mensagem-erro');
+      }
+
+      mensagemDiv.style.display = 'block'; // Mostra a mensagem
+    });
+  </script>
+</body>
+</html>
